@@ -1,26 +1,34 @@
-import React, {useState} from "react";
+import React, { useCallback, useState } from "react";
+import List from "./list";
 
-const Hooks = () => {
-	const [number, setNumber] = useState(1)
-	const [dark, setDark] = useState(false)
+const UseCallback = () => {
+  const [number, setNumber] = useState(1);
+  const [dark, setDark] = useState(false);
 
-	// const getItems = () => {
-	// 	return [number, number+1, number+2]
-	// }
+  const getItems = useCallback(() => {
+    return [number, number + 1, number + 2];
+  }, [number]);
 
-	const theme = {
-		backgroundColor: dark ? '#333' : '#fff',
-		color: dark ? '#fff' : '#333'
-	}
+  const theme = {
+    backgroundColor: dark ? "#333" : "#fff",
+    color: dark ? "#fff" : "#333",
+  };
 
-	return (
-		<>
-			<div style={theme}>
-				<input type="text" value={number} onChange={e => setNumber(parseInt(e.target.value))}/>
-				<button onClick={() => setDark(prevDark => !prevDark)}></button>
-			</div>
-		</>
-	)
-}
+  return (
+    <>
+      <div style={theme}>
+        <input
+          type="number"
+          value={number}
+          onChange={(e) => setNumber(parseInt(e.target.value))}
+        />
+        <button onClick={() => setDark((prevDark) => !prevDark)}>
+          Change theme
+        </button>
+        <List getItems={getItems} />
+      </div>
+    </>
+  );
+};
 
-export default Hooks
+export default UseCallback;
