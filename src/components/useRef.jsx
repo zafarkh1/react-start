@@ -39,8 +39,8 @@ const UseRef = () => {
 
 export default UseRef;
 
-/*
-import React, {useState } from "react";
+
+/*import React, {useState } from "react";
 
 const UseRef = () => {
 	const [title, setTitle] = useState()
@@ -79,5 +79,4 @@ const UseRef = () => {
   );
 };
 
-export default UseRef;
-*/
+export default UseRef; */
